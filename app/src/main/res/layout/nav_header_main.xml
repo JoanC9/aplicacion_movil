@@ -14,7 +14,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="206dp"
+        android:layout_width="131dp"
         android:layout_height="82dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -27,6 +27,7 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#000000"
         android:textSize="16sp" />
 
     <TextView
@@ -34,16 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/nav_header_subtitle_descripcion"
-        android:textColor="#FFF7F7"
+        android:textColor="#0F0F0F"
         android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle"
-        android:textColor="#F8F2F2"
-        android:textSize="14sp" />
+
 
 
 </LinearLayout>

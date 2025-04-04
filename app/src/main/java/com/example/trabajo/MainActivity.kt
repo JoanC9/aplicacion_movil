@@ -1,7 +1,10 @@
 package com.example.trabajo
 
+
 import android.os.Bundle
 import android.view.Menu
+import android.webkit.WebChromeClient
+import android.webkit.WebView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -20,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,4 +63,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+
+
 }

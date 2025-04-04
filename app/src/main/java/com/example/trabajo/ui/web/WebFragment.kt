@@ -1,42 +1,38 @@
 package com.example.trabajo.ui.web
 
-
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.trabajo.databinding.FragmentWebBinding
+import com.example.trabajo.R
+import java.net.CookieManager
 
 class WebFragment : Fragment() {
 
-    private var _binding: FragmentWebBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val webViewModel =
-            ViewModelProvider(this).get(WebViewModel::class.java)
+    ): View? {
+        val root = inflater.inflate(R.layout.fragment_web, container, false)
 
-        _binding = FragmentWebBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Encuentra el WebView en el diseño
+        val webView: WebView = root.findViewById(R.id.webView)
 
+        // Habilita la ejecución de JavaScript (necesario para LinkedIn)
+        webView.settings.javaScriptEnabled = true
 
-        //ACA SE PROGRAMA LAS FUNCIONALIDADES DE LA VISTA
+        // Hace que el WebView abra los enlaces dentro de la app en lugar del navegador
+        webView.webViewClient = WebViewClient()
+
+        // Carga la página de LinkedIn
+        webView.loadUrl("https://www.linkedin.com/in/joan-cruz-b3346a262/")
+        
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -4,38 +4,38 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.webkit.WebView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.trabajo.databinding.FragmentSlideshowBinding
+import com.example.trabajo.R
 
 class SlideshowFragment : Fragment() {
 
-    private var _binding: FragmentSlideshowBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+    ): View? {
+        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
 
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        // Encontramos el WebView dentro del fragmento
+        val webView: WebView = root.findViewById(R.id.video)
 
+        // Código del video de YouTube
+        val video = """
+            <iframe width="100%" height="100%" 
+            src="https://www.youtube.com/embed/PyCqsdykn8o?si=22U6VlzqS7jApJi7" 
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+            clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        """.trimIndent()
 
-        //ACA SE PROGRAMA LAS FUNCIONALIDADES DE LA VISTA
+        // Configuración del WebView
+        webView.settings.javaScriptEnabled = true
+        webView.settings.pluginState = WebSettings.PluginState.ON
+        webView.webChromeClient = WebChromeClient()
+        webView.loadData(video, "text/html", "utf-8")
 
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
