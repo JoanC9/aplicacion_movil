@@ -26,8 +26,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
-        android:background="@color/black"
-        app:srcCompat="@android:drawable/arrow_down_float" />
+        app:maxImageSize="35dp"
+        app:srcCompat="@drawable/file_download_outline"
+        app:tint="#000" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -37,6 +38,7 @@
         android:theme="@style/Theme.Trabajo.AppBarOverlay"
         app:layout_anchor="@+id/appBarLayout"
         app:layout_anchorGravity="center"
-        app:popupTheme="@style/Theme.Trabajo.PopupOverlay" />
+        app:popupTheme="@style/Theme.Trabajo.PopupOverlay"
+        app:subtitleTextColor="#E20D0D" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
